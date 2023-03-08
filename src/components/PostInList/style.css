@@ -1,0 +1,17 @@
+.PostInList{
+    display: flex;
+    flex-direction: row;
+    font-family: dosis, sans-serif;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+}
+
+.PostInList .svg{
+    margin-left: auto;
+    margin-right: 10px;
+    order: 2;
+}
+
+
+
+
