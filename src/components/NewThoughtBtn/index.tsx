@@ -1,6 +1,7 @@
 import './style.css'
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal'
+import Post from '../models/Post';
 
 const customStyles = {
   content: {
@@ -13,8 +14,15 @@ const customStyles = {
   },
 };
 
-const NewThoughtBtn = () => {
+interface Prop {
+  addPost: (x:Post) => void
+}
+
+const NewThoughtBtn = ({addPost}: Prop) => {
   let subtitle:any;
+  const [title, setTitle] = useState("")
+  const [thought, setThought] = useState("")
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -28,6 +36,19 @@ const NewThoughtBtn = () => {
   function closeModal() {
     setIsOpen(false);
   }
+
+  const handleSubmit = (e:FormEvent) => {
+    e.preventDefault()
+    let NewPost: Post = {
+      title: title,
+      thought: thought
+    }
+    setTitle("")
+    setThought("")
+    addPost(NewPost)
+    closeModal()
+  }
+  
   return (
     <div className='container'>
       <button className="Btn" onClick={openModal}>
@@ -41,13 +62,25 @@ const NewThoughtBtn = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <div className="modal-ctn">
-          <h3>Title:</h3>
-          <input type="text" />
-          <h3>Thought</h3>
-          <textarea name="" id=""></textarea>
-          <button>Add Post</button>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="Title"> Title</label>
+          <input
+          className='title'
+           type="text"
+           value={title}
+           onChange={(e) => setTitle(e.target.value)}
+          />
+
+          <label htmlFor="thought"> Thought</label>
+          <input
+          className='textarea'
+           type="text"
+           value={thought}
+           onChange={(e) => setThought(e.target.value)}
+          />
+          <button type="submit">Add Post</button>
+        </form>
+        
       </Modal>
     </div>
     

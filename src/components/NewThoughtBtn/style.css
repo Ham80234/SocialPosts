@@ -28,20 +28,35 @@
     font-size: 1.4rem;
 }
 
-.modal-ctn input{
-    height: 50px;
-    border: 1px solid black;
-    border-radius: 3px;
-    font-size: 35px;
- }
+form { 
+    display: flex;
+    flex-direction: column;
+}
 
- .modal-ctn textarea{
-    margin-bottom: 10px;
-    height: 300px;
- }
- .modal-ctn button{
+form  label{ 
+    font-family: Dosis;
+    font-size: 1.5rem;
+}
+
+form input { 
+    width: 500px;
     height: 50px;
-    border: 1px solid black;
-    border-radius: 3px;
-    font-size: 35px;
- }
+    border: 2px solid black;
+    border-radius: 6px;
+}
+form .textarea{
+   height: 120px;
+   margin-bottom: 20px;
+   font-family: Dosis;
+}
+form .title { 
+    font-size: 1.2rem;
+    font-family: Dosis;
+}
+form button { 
+    font-family: Dosis;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 6px;
+    font-size: 1.2rem;
+}
